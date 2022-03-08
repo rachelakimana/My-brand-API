@@ -8,7 +8,13 @@ var _dotenv = _interopRequireDefault(require("dotenv"));
 
 var _dbConn = _interopRequireDefault(require("./config/dbConn.mjs"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Auth = _interopRequireDefault(require("./routes/Auth.mjs"));
+
+var _blog = _interopRequireDefault(require("./routes/blog.mjs"));
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 _dotenv.default.config();
 
@@ -18,4 +24,8 @@ const app = (0, _express.default)();
 _mongoose.default.connection.once("open", () => {
   console.log("Connected to MongoDB");
   app.listen(3000, () => console.log("Server running on port 3000"));
-});
+}); // middleware
+
+app.use(_express.default.json());
+app.use("/api/blog", _Auth.default);
+app.use("/api/blog", _blog.default);
