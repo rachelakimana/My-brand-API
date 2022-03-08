@@ -37,13 +37,48 @@ router.post("/login", async (req, res) => {
 
     const { password, ...others } = user._doc;
 
-    const token = jwt.sign(others, process.env.SECRET);
-
-    res.status(200).json({ token });
+    jwt.sign(
+      others,
+      process.env.SECRET,
+      { expiresIn: "150s" },
+      (err, token) => {
+        res.status(200).json({ token });
+      }
+    );
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
   }
 });
+
+// FORMAT OF TOKEN
+// Authorization: Bearer <access_token>
+
+// Verify Token
+export const verifyToken = (req, res, next) => {
+  // Get auth header value
+  const bearerHeader = req.headers["authorization"];
+  // Check if bearer is undefined
+  if (typeof bearerHeader !== "undefined") {
+    // Split at the space
+    const bearer = bearerHeader.split(" ");
+    // Get token from array
+    const bearerToken = bearer[1];
+    // Set the token
+    req.token = bearerToken;
+    // Next middleware
+    jwt.verify(req.token, process.env.SECRET, (err, authData) => {
+      if (err) {
+        // res.sendStatus(403);
+        res.status(403).json({ message: "Unauthorized access. Please login" });
+      } else {
+        next();
+      }
+    });
+  } else {
+    // Forbidden
+    res.sendStatus(403);
+  }
+};
 
 export default router;

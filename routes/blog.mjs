@@ -1,3 +1,4 @@
+import { verifyToken } from "./Auth.mjs";
 import express from "express";
 import {
   createArticle,
@@ -9,76 +10,14 @@ import {
 
 var router = express.Router();
 
-router.post("/add", createArticle);
+router.post("/add", verifyToken, createArticle);
 
-router.get("/:id", getOneArticle);
+router.get("/:id", verifyToken, getOneArticle);
 
-router.delete("/:id", deleteArticle);
+router.delete("/:id", verifyToken, deleteArticle);
 
-router.put("/:id", updateArticle);
+router.put("/:id", verifyToken, updateArticle);
 
-router.get("/", getAllArticle);
-
-// //create blog article
-// router.post("/add", async (req, res) => {
-//   try {
-//     const saveBlog = await new Blog(req.body);
-//     const savedBlog = await saveBlog.save();
-//     res.status(200).json(savedBlog);
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// });
-
-// //get one Article
-// router.get("/:id", async (req, res) => {
-//   try {
-//     const getOneArticle = await Blog.findById(req.params.id);
-//     console.log(getOneArticle);
-//     res.status(200).json(getOneArticle);
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// });
-
-// //delete Article
-// router.delete("/:id", async (req, res) => {
-//   try {
-//     const deleteArticle = await Blog.findById(req.params.id);
-//     if (deleteArticle.userId === req.body.userId) {
-//       await Blog.deleteOne();
-//       res.status(200).json("Article is deleted");
-//     } else {
-//       res.status(403).json("you can only delete your post");
-//     }
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// });
-
-// //update Article
-// router.put("/:id", async (req, res) => {
-//   try {
-//     const updateArticle = await Blog.findById(req.params.id);
-//     if (updateArticle.userId === req.body.userId) {
-//       await Blog.updateOne({ $set: req.body });
-//       res.status(200).json("it has been updated");
-//     } else {
-//       res.status(403).json("you can only update your post");
-//     }
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// });
-
-// //get All posts
-// router.get("/", async (req, res) => {
-//   try {
-//     const getAllBlog = await Blog.find();
-//     res.status(200).json(getAllBlog);
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// });
+router.get("/", verifyToken, getAllArticle);
 
 export default router;

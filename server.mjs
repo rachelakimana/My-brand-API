@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import connectDB from "./config/dbConn.mjs";
 import authRoute from "./routes/Auth.mjs";
+import jwt from "jsonwebtoken";
+import { verifyToken } from "./routes/Auth.mjs";
 import blogRoute from "./routes/blog.mjs";
 
 dotenv.config();
@@ -16,5 +18,5 @@ mongoose.connection.once("open", () => {
 });
 // middleware
 app.use(express.json());
-app.use("/api/blog", authRoute);
+app.use("/api/user", authRoute);
 app.use("/api/blog", blogRoute);
