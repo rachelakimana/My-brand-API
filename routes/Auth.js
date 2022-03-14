@@ -1,13 +1,37 @@
 import express from "express";
-import User from "../models/user.mjs";
+import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs/dist/bcrypt.js";
 var router = express.Router();
-
+/**
+ * @swagger
+ * /user/register:
+ *   post:
+ *     tags:
+ *     - USER
+ *     summary: Create user.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: The username.
+ *               email:
+ *                 type: string
+ *                 description: The user's email.
+ *               password:
+ *                 type: string
+ *                 description: The user's password.
+ *     responses:
+ *       201:
+ *         ...
+ */
 //register end point
 router.post("/register", async (req, res) => {
-  // const confirm = await User.find({Username : req.body.username ,email : req.body.email})
-  //confirm && res.status(400).json('this user or email exist');
   try {
     const salt = await bcrypt.genSalt(16);
     const hashedPass = await bcrypt.hash(req.body.password, salt);
@@ -26,6 +50,32 @@ router.post("/register", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /user/login:
+ *   post:
+ *     tags:
+ *     - USER
+ *     summary: Login user.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: The username.
+ *               password:
+ *                 type: string
+ *                 description: The user's password.
+ *     responses:
+ *      200:
+ *        description: Wrong user
+ *      400:
+ *        description: Wrong password
+ */
 //login endpoint
 router.post("/login", async (req, res) => {
   try {
@@ -40,7 +90,7 @@ router.post("/login", async (req, res) => {
     jwt.sign(
       others,
       process.env.SECRET,
-      { expiresIn: "150s" },
+      { expiresIn: "1250s" },
       (err, token) => {
         res.status(200).json({ token });
       }
