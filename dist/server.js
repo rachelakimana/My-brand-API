@@ -1,12 +1,12 @@
 "use strict";
 
-var _dotenv = _interopRequireDefault(require("dotenv"));
+var _express = _interopRequireDefault(require("express"));
 
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
-var _dbConn = _interopRequireDefault(require("./config/dbConn.mjs"));
+var _dotenv = _interopRequireDefault(require("dotenv"));
 
-var _express = _interopRequireDefault(require("express"));
+var _dbConn = _interopRequireDefault(require("./config/dbConn.mjs"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -14,18 +14,8 @@ _dotenv.default.config();
 
 (0, _dbConn.default)();
 const app = (0, _express.default)();
-app.listen(3000, () => {
-  console.log("server is listening on port 3000");
-});
-app.get("/api/products", (req, res) => {
-  res.json([{
-    name: "iPhone",
-    price: 800
-  }, {
-    name: "iPad",
-    price: 650
-  }, {
-    name: "iWatch",
-    price: 750
-  }]);
+
+_mongoose.default.connection.once("open", () => {
+  console.log("Connected to MongoDB");
+  app.listen(3000, () => console.log("Server running on port 3000"));
 });
