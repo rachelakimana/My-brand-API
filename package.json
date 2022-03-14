@@ -4,7 +4,7 @@
   "description": "Andela capstone project build my first API of my personal website",
   "main": "server.js",
   "scripts": {
-    "start:dev": "nodemon --exec babel-node ./server.js",
+    "start": "nodemon --exec babel-node ./server.js",
     "build-babel": "babel -d ./build ./server.js -s"
   },
   "author": "Rachel",
