@@ -3,6 +3,37 @@ import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs/dist/bcrypt.js";
 var router = express.Router();
+
+// FORMAT OF TOKEN
+// Authorization: Bearer <access_token>
+
+// Verify Token
+export const verifyToken = (req, res, next) => {
+  // Get auth header value
+  const bearerHeader = req.headers["authorization"];
+  // Check if bearer is undefined
+  if (typeof bearerHeader !== "undefined") {
+    // Split at the space
+    const bearer = bearerHeader.split(" ");
+    // Get token from array
+    const bearerToken = bearer[1];
+    // Set the token
+    req.token = bearerToken;
+    // Next middleware
+    jwt.verify(req.token, process.env.SECRET, (err, authData) => {
+      if (err) {
+        // res.sendStatus(403);
+        res.status(403).json({ message: "Unauthorized access. Please login" });
+      } else {
+        next();
+      }
+    });
+  } else {
+    // Forbidden
+    res.sendStatus(403);
+  }
+};
+
 /**
  * @swagger
  * /user/register:
@@ -31,7 +62,7 @@ var router = express.Router();
  *         ...
  */
 //register end point
-router.post("/register", async (req, res) => {
+router.post("/register", verifyToken, async (req, res) => {
   try {
     const salt = await bcrypt.genSalt(16);
     const hashedPass = await bcrypt.hash(req.body.password, salt);
@@ -100,35 +131,5 @@ router.post("/login", async (req, res) => {
     res.status(500).json(error);
   }
 });
-
-// FORMAT OF TOKEN
-// Authorization: Bearer <access_token>
-
-// Verify Token
-export const verifyToken = (req, res, next) => {
-  // Get auth header value
-  const bearerHeader = req.headers["authorization"];
-  // Check if bearer is undefined
-  if (typeof bearerHeader !== "undefined") {
-    // Split at the space
-    const bearer = bearerHeader.split(" ");
-    // Get token from array
-    const bearerToken = bearer[1];
-    // Set the token
-    req.token = bearerToken;
-    // Next middleware
-    jwt.verify(req.token, process.env.SECRET, (err, authData) => {
-      if (err) {
-        // res.sendStatus(403);
-        res.status(403).json({ message: "Unauthorized access. Please login" });
-      } else {
-        next();
-      }
-    });
-  } else {
-    // Forbidden
-    res.sendStatus(403);
-  }
-};
 
 export default router;
