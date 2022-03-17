@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --exec babel-node ./server.js",
-    "build-babel": "babel -d ./build ./server.js -s"
+    "build-babel": "babel -d ./build ./server.js -s",
+    "heroku":"babel-node server.js"
   },
   "author": "Rachel",
   "license": "ISC",
