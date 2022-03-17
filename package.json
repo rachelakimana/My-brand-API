@@ -2,28 +2,31 @@
   "name": "my-brand",
   "version": "1.0.0",
   "description": "Andela capstone project build my first API of my personal website",
-  "main": "server.mjs",
+  "main": "server.js",
   "scripts": {
-    "type": "module",
-    "dev": "nodemon —exec babel-node server.mjs",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src/mjs",
-    "build": "babel server.mjs -d dist",
-    "start:heroku": "babel-node server.mjs"
+    "start": "nodemon --exec babel-node ./server.js",
+    "build-babel": "babel -d ./build ./server.js -s"
   },
   "author": "Rachel",
   "license": "ISC",
   "dependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
-    "mongoose": "^6.2.4"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.4",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.5",
+    "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.16.11",
+    "@babel/runtime": "^7.17.2",
     "eslint": "^8.10.0"
-  }
+  },
+  "type":"module"
 }
