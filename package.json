@@ -28,5 +28,5 @@
     "@babel/runtime": "^7.17.2",
     "eslint": "^8.10.0"
   },
-  "type":"module"
+  "type": "module"
 }
