@@ -16,7 +16,9 @@ connectDB();
 const app = express();
 mongoose.connection.once("open", () => {
   console.log("Connected to MongoDB");
-  app.listen(3000, () => console.log("Server running on port 3000"));
+  app.listen(process.env.PORT, () =>
+    console.log("Server running on port 3000")
+  );
 });
 
 //swagger definition
