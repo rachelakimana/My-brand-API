@@ -8,6 +8,7 @@ import { verifyToken } from "./routes/Auth.js";
 import blogRoute from "./routes/blog.js";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
+import cors from "cors";
 
 dotenv.config();
 
@@ -46,6 +47,7 @@ const swaggerSpec = swaggerJSDoc(options);
 
 // middleware
 app.use(express.json());
+app.use(cors());
 app.use("/api/user", authRoute);
 app.use("/api/blog", blogRoute);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
