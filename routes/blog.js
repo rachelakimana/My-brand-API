@@ -2,10 +2,9 @@ import { verifyToken } from "./Auth.js";
 import express from "express";
 import {
   createArticle,
-  getOneArticle,
+  getArticle,
   deleteArticle,
   updateArticle,
-  getAllArticle,
 } from "../controlers/blog.js";
 
 var router = express.Router();
@@ -55,7 +54,7 @@ router.post("/add", verifyToken, createArticle);
  *       200:
  *         ...
  */
-router.get("/:id", getOneArticle);
+router.get("/:id", getArticle);
 /**
  * @swagger
  * /blog/{id}:
@@ -104,7 +103,5 @@ router.delete("/:id", verifyToken, deleteArticle);
  */
 
 router.put("/:id", verifyToken, updateArticle);
-
-router.get("/", getAllArticle);
 
 export default router;
