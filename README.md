@@ -1,8 +1,8 @@
-![](<https://img.shields.io/badge/Coverage-67%25-5A7302.svg?prefix=![](https://img.shields.io/badge/Coverage-77%25-5A7302.svg?prefix=$coverage$))>)
-![](<https://img.shields.io/badge/Statements-66%25-5A7302.svg?style=flat&logo=kotlin&logoColor=white&color=blue&prefix=![](https://img.shields.io/badge/Coverage-79%25-5A7302.svg?style=flat&logo=kotlin&logoColor=white&color=blue&prefix=$statements$))>)
-![](<https://img.shields.io/badge/Branches-59%25-F2E96B.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=![branches](https://img.shields.io/badge/Branches-59%25-F2E96B.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=![](https://img.shields.io/badge/Coverage-56%25-F2E96B.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=$branches$))>)
-![](<https://img.shields.io/badge/Functions-76%25-5A7302.svg?prefix=![functions](https://img.shields.io/badge/Functions-76%25-5A7302.svg?prefix=![](https://img.shields.io/badge/Coverage-95%25-83A603.svg?prefix=$functions$))>)
-![](<https://img.shields.io/badge/Lines-66%25-5A7302.svg?prefix=![](https://img.shields.io/badge/Coverage-79%25-5A7302.svg?prefix=$lines$))>)
+![](<https://img.shields.io/badge/Coverage-67%25-5A7302.svg?prefix=![](https://img.shields.io/badge/Coverage-NaN%25-grey.svg?prefix=$coverage$))>)
+![](<https://img.shields.io/badge/Statements-66%25-5A7302.svg?style=flat&logo=kotlin&logoColor=white&color=blue&prefix=![](https://img.shields.io/badge/Coverage-NaN%25-grey.svg?style=flat&logo=kotlin&logoColor=white&color=blue&prefix=$statements$))>)
+![](<https://img.shields.io/badge/Branches-59%25-F2E96B.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=![branches](https://img.shields.io/badge/Branches-59%25-F2E96B.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=![](https://img.shields.io/badge/Coverage-NaN%25-grey.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=$branches$))>)
+![](<https://img.shields.io/badge/Functions-76%25-5A7302.svg?prefix=![functions](https://img.shields.io/badge/Functions-76%25-5A7302.svg?prefix=![](https://img.shields.io/badge/Coverage-NaN%25-grey.svg?prefix=$functions$))>)
+![](<https://img.shields.io/badge/Lines-66%25-5A7302.svg?prefix=![](https://img.shields.io/badge/Coverage-NaN%25-grey.svg?prefix=$lines$))>)
 
 # Project Summary
 
