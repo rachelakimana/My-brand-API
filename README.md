@@ -1,3 +1,5 @@
+[![Deploy](https://github.com/rachelakimana/My-brand-API/actions/workflows/action.yml/badge.svg)](https://github.com/rachelakimana/My-brand-API/actions/workflows/action.yml)
+
 ![](<https://img.shields.io/badge/Coverage-67%25-5A7302.svg?prefix=![](https://img.shields.io/badge/Coverage-NaN%25-grey.svg?prefix=$coverage$))>)
 ![](<https://img.shields.io/badge/Statements-66%25-5A7302.svg?style=flat&logo=kotlin&logoColor=white&color=blue&prefix=![](https://img.shields.io/badge/Coverage-NaN%25-grey.svg?style=flat&logo=kotlin&logoColor=white&color=blue&prefix=$statements$))>)
 ![](<https://img.shields.io/badge/Branches-59%25-F2E96B.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=![branches](https://img.shields.io/badge/Branches-59%25-F2E96B.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=![](https://img.shields.io/badge/Coverage-NaN%25-grey.svg?style=social&logo=ktor&logoColor=black&color=red&prefix=$branches$))>)
