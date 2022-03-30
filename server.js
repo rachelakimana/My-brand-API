@@ -54,6 +54,6 @@ app.use("/api/v1/blog", blogRoute);
 app.use("/api/v1", commentRoute);
 app.use("/api/v1", messageRoute);
 app.use("/api/v1/blogs", allBlogsRoute);
-app.use("api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 export default app;
